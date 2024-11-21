@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./PokemonCard.css";
+import { useTheme } from "../../contexts/ThemeContext";
 
 interface PokemonDataProps {
   pokemonData: {
@@ -11,9 +12,14 @@ interface PokemonDataProps {
 }
 
 const PokemonCard = ({ pokemonData }: PokemonDataProps) => {
+  const { theme } = useTheme();
   return (
     <Link to={`/pokemon/${pokemonData.id}`}>
-      <figure className="pokemon_box">
+      <figure
+        className={`pokemon_box ${
+          theme === "light" ? "light_theme" : "dark_theme"
+        }`}
+      >
         <img
           src={pokemonData.sprite}
           alt={pokemonData.name}

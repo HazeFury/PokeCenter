@@ -1,0 +1,19 @@
+.pokedex_section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.section_detail {
+  text-align: center;
+  padding: 15px;
+}
+
+.section_detail p {
+  font-style: italic;
+}
+
+.section_detail h1 {
+  color: var(--secondary-color);
+}
