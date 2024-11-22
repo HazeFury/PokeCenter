@@ -32,9 +32,28 @@
   color: var(--secondary-color);
 }
 
+.back_btn_box {
+  text-align: center;
+  padding: 40px 0 60px 0;
+}
+
 .back_btn {
   padding: 20px;
   margin: 0 auto;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.back_btn:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.02);
+  color: white;
+}
+
+.back_btn:focus {
+  transform: scale(0.95);
 }
 
 @media screen and (max-width: 650px) {

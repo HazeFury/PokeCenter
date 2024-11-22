@@ -53,11 +53,13 @@ const PokemonPage = () => {
           </p>
         </div>
       </section>
-      <Link to="/pokedex">
-        <button type="button" className="back_btn">
-          Revenir au pokedex
-        </button>
-      </Link>
+      <div className="back_btn_box">
+        <Link to="/pokedex">
+          <button type="button" className="back_btn">
+            Revenir au pokedex
+          </button>
+        </Link>
+      </div>
     </>
   );
 };
