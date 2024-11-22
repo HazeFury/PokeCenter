@@ -1,0 +1,24 @@
+.pokemon_img {
+  width: 150px;
+}
+
+.pokemon_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: solid 2px;
+  border-radius: 10px;
+  margin: 6px 10px;
+  transition: all 0.2s ease-in-out;
+}
+.pokemon_box p {
+  padding: 0 0 10px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.pokemon_box:hover {
+  transform: scale(1.04);
+  border: solid 2px var(--secondary-color);
+}

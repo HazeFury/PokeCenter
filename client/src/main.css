@@ -17,10 +17,12 @@ body {
 .light_theme {
   background-color: var(--white-color);
   color: black;
+  border-color: var(--main-color);
 }
 .dark_theme {
   background-color: rgb(44, 44, 44);
   color: white;
+  border-color: var(--white-color);
 }
 
 main {

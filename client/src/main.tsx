@@ -12,8 +12,9 @@ import BackOffice from "./BackOffice";
 import FrontOffice from "./FrontOffice";
 import Action from "./pages/BackOffice/Action";
 import Staff from "./pages/BackOffice/Staff";
-import Home from "./pages/FrontOffice/Home";
-import Pokedex from "./pages/FrontOffice/Pokedex";
+import Home from "./pages/FrontOffice/Home/Home";
+import Pokedex from "./pages/FrontOffice/Pokedex/Pokedex";
+import PokemonPage from "./pages/FrontOffice/PokemonPage/PokemonPage";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/pokedex",
         element: <Pokedex />,
+      },
+      {
+        path: "/pokemon/:id",
+        element: <PokemonPage />,
       },
     ],
   },

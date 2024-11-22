@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import PokeLogo from "../assets/images/pokeball.png";
+import PokeLogo from "../../assets/images/pokeball.png";
 
 import "./Header.css";
-import ToggleTheme from "./ToggleTheme";
+import ToggleTheme from "../ToggleTheme/ToggleTheme";
 
 const Header = () => {
   return (
