@@ -9,7 +9,6 @@ function BackOffice() {
   return (
     <>
       <Header />
-      <header />
 
       <main className={theme === "light" ? "light_theme" : "dark_theme"}>
         <Outlet />

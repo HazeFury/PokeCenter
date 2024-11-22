@@ -3,6 +3,8 @@ import "./Home.css";
 const Home = () => {
   return (
     <>
+      <header />
+
       <h2>Page d'accueil</h2>
       <form>
         <div>
