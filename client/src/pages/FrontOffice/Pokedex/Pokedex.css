@@ -18,3 +18,7 @@
 .section_detail h1 {
   color: var(--secondary-color);
 }
+
+.error_text {
+  font-size: 2rem;
+}
