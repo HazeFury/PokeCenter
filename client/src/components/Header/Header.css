@@ -35,6 +35,11 @@ nav .back_office {
 nav .jadielle_center {
   font-size: 1.2rem;
   margin-left: 10px;
+  display: none;
+}
+nav .mobile_jadielle_center {
+  font-size: 1.2rem;
+  margin-left: 10px;
 }
 
 nav .office_text {
@@ -51,6 +56,10 @@ nav .office_text {
 .flex {
   display: flex;
   flex-direction: row;
+}
+
+.red_text {
+  color: var(--secondary-color);
 }
 
 .flex img {
@@ -88,7 +97,31 @@ a:hover {
   color: rgb(244, 228, 122);
 }
 
-section {
-  display: flex;
-  justify-content: space-between;
+.desktop_display {
+  display: none;
+}
+
+.mobile_display {
+  display: block;
+}
+
+@media screen and (min-width: 900px) {
+  .desktop_display {
+    display: block;
+    display: flex;
+    justify-content: space-between;
+  }
+  .mobile_display {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  nav .mobile_jadielle_center {
+    display: none;
+  }
+
+  nav .jadielle_center {
+    display: block;
+  }
 }

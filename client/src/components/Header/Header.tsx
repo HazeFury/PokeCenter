@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import PokeLogo from "../../assets/images/pokeball.png";
-
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import "./Header.css";
 import ToggleTheme from "../ToggleTheme/ToggleTheme";
 
@@ -9,9 +9,14 @@ const Header = () => {
     <nav>
       <div className="flex">
         <img src={PokeLogo} alt="pokeball_logo" className="poke_logo" />
-        <h1 className="jadielle_center">Pokemon Health Center</h1>
+        <h1 className="jadielle_center">
+          <span className="red_text">P</span>okemon{" "}
+          <span className="red_text">H</span>ealth{" "}
+          <span className="red_text">C</span>enter
+        </h1>
+        <h1 className="mobile_jadielle_center red_text">PHC</h1>
       </div>
-      <section>
+      <section className="desktop_display">
         <div className="front_office">
           <h2 className="office_text">Front Office</h2>
           <ul className="flex">
@@ -37,6 +42,9 @@ const Header = () => {
         <div className="toggle_container">
           <ToggleTheme />
         </div>
+      </section>
+      <section className="mobile_display">
+        <BurgerMenu />
       </section>
     </nav>
   );

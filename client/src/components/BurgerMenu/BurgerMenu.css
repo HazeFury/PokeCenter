@@ -1,0 +1,74 @@
+.menu_icon {
+  width: 40px;
+}
+
+.menu_btn {
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  border: none;
+  padding: 2px;
+  transition: 0.2s ease all;
+}
+
+.menu_btn:active {
+  background-color: rgba(225, 225, 225, 0.75);
+}
+
+.display_none {
+  left: 2000px;
+  display: none;
+}
+
+.display_flex {
+  left: 0;
+  display: flex;
+}
+
+.opened_menu_container {
+  background-color: rgba(31, 31, 31, 0.95);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 80px;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 40px;
+}
+
+.mobile_link {
+  color: var(--white-color);
+  font-size: 2rem;
+}
+
+.mobile_link:hover {
+  color: var(--secondary-color);
+}
+
+.list_element_burger {
+  margin: 20px 0;
+}
+
+.login_link {
+  background-color: var(--secondary-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.right_to_left {
+  animation: slide_right_to_left 0.4s ease;
+}
+
+@keyframes slide_right_to_left {
+  from {
+    left: 1000px;
+  }
+  to {
+    left: 0px;
+  }
+}
