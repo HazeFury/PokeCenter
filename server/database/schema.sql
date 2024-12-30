@@ -11,11 +11,13 @@ create table item (
   foreign key(user_id) references user(id)
 );
 
-insert into user(id, email, password)
-values
-  (1, "jdoe@mail.com", "123456");
-
-insert into item(id, title, user_id)
-values
-  (1, "Stuff", 1),
-  (2, "Doodads", 1);
+create table pokedex (
+  id int unsigned primary key auto_increment not null,
+  name varchar(50) not null unique,
+  image varchar(255) not null,
+  sprite varchar(255) not null,
+  type varchar(40) not null,
+  health int not null,
+  attack int not null,
+  defense int not null
+);
