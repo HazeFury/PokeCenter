@@ -2,11 +2,8 @@ import AbstractSeeder from "./AbstractSeeder";
 
 class PokedexSeeder extends AbstractSeeder {
   constructor() {
-    // Call the constructor of the parent class (AbstractSeeder) with appropriate options
     super({ table: "pokedex", truncate: true });
   }
-
-  // The run method - Populate the 'pokedex' table with fake data
 
   async run() {
     try {
@@ -38,5 +35,4 @@ class PokedexSeeder extends AbstractSeeder {
   }
 }
 
-// Export the PokedexSeeder class
 export default PokedexSeeder;
