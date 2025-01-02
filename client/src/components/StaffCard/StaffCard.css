@@ -1,0 +1,38 @@
+.staff_img {
+  height: 300px;
+  margin: 20px;
+}
+
+.staff_box {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: solid 2px;
+  border-radius: 10px;
+  margin: 20px 20px;
+  transition: all 0.2s ease-in-out;
+}
+.staff_box p {
+  padding: 0 0 10px 0;
+  width: 100%;
+  text-align: center;
+  font-style: italic;
+}
+
+.staff_box:hover {
+  transform: scale(1.04);
+  border: solid 2px var(--secondary-color);
+}
+
+#staff_name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.red_text {
+  color: var(--secondary-color);
+  font-weight: 600;
+}

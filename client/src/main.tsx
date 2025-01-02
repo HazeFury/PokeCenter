@@ -10,8 +10,8 @@ import "./main.css";
 // Import the main app component
 import BackOffice from "./BackOffice";
 import FrontOffice from "./FrontOffice";
-import Action from "./pages/BackOffice/Action";
-import Staff from "./pages/BackOffice/Staff";
+import Action from "./pages/BackOffice/Action/Action";
+import Staff from "./pages/BackOffice/Staff/Staff";
 import Home from "./pages/FrontOffice/Home/Home";
 import Pokedex from "./pages/FrontOffice/Pokedex/Pokedex";
 import PokemonPage from "./pages/FrontOffice/PokemonPage/PokemonPage";
@@ -46,8 +46,8 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/backoffice", // The root path
-    element: <BackOffice />, // Renders the App component for the home page
+    path: "/backoffice",
+    element: <BackOffice />,
     children: [
       {
         path: "staff",
