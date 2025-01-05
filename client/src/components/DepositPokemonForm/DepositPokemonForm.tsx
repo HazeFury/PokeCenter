@@ -10,6 +10,7 @@ interface DepositPokemonFormProps {
     health: number;
     sprite: string;
   }[];
+  refreshData: () => void;
 }
 
 type pokemonData = {
@@ -19,14 +20,16 @@ type pokemonData = {
   sprite: string;
 };
 
-const DepositPokemonForm = ({ pokedexData }: DepositPokemonFormProps) => {
+const DepositPokemonForm = ({
+  pokedexData,
+  refreshData,
+}: DepositPokemonFormProps) => {
   // #################  STATE  #############################
   const [selectedPokemon, setSelectedPokemon] = useState<
     undefined | pokemonData
   >(undefined);
 
   const [pokeForm, setPokeForm] = useState({
-    pokemon_id: "0",
     pokemon_pseudo: "",
     pokemon_owner: "",
     health_left: "0",
@@ -63,6 +66,30 @@ const DepositPokemonForm = ({ pokedexData }: DepositPokemonFormProps) => {
     setPokeForm({ ...pokeForm, health_left: "0" });
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newPokemonToHeal = {
+      pokemon_id: selectedPokemon?.id,
+      pokemon_pseudo: pokeForm.pokemon_pseudo,
+      pokemon_owner: pokeForm.pokemon_owner,
+      health_left: Number.parseInt(pokeForm.health_left),
+    };
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/new-pokemon-to-heal`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newPokemonToHeal),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        setSelectedPokemon(undefined);
+        refreshData();
+      });
+  };
+
   // #################  VARIABLE  #############################
   // => raccourci pour pour savoir si la vie du pokemon qu'on veut placer
   // est égale à sa vie maximum (afin de désactiver le bouton submit)
@@ -74,6 +101,7 @@ const DepositPokemonForm = ({ pokedexData }: DepositPokemonFormProps) => {
 
   return (
     <form
+      onSubmit={handleSubmit}
       className={`deposit_form ${
         theme === "light" ? "light_theme" : "dark_theme"
       }`}
