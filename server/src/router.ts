@@ -13,6 +13,7 @@ router.get("/api/staff", staffActions.browse);
 import pokemonHealActions from "./modules/pokemonHeal/pokemonHealActions";
 
 router.get("/api/pokemon-to-heal", pokemonHealActions.browse);
+router.post("/api/new-pokemon-to-heal", pokemonHealActions.add);
 
 /* ************************************************************************* */
 
