@@ -56,7 +56,7 @@ const DepositPokemonForm = ({ pokedexData }: DepositPokemonFormProps) => {
     const choosenId = Number.parseInt(e.target.value);
 
     const choosenPokemonData = pokedexData.find(
-      (pokemon) => pokemon.id === choosenId
+      (pokemon) => pokemon.id === choosenId,
     );
 
     setSelectedPokemon(choosenPokemonData);
@@ -128,7 +128,7 @@ const DepositPokemonForm = ({ pokedexData }: DepositPokemonFormProps) => {
             <span
               className={diplayLifeColor(
                 Number.parseInt(pokeForm.health_left),
-                selectedPokemon.health
+                selectedPokemon.health,
               )}
             >
               {pokeForm.health_left} / {selectedPokemon.health}

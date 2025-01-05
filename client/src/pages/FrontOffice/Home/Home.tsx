@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import "./Home.css";
 import DepositPokemonForm from "../../../components/DepositPokemonForm/DepositPokemonForm";
-import WaitHealingCard from "../../../components/WaitHealingCard/WaitHealingCard";
 import EmptyPage from "../../../components/UI-components/EmptyPage/EmptyPage";
-import Loader from "../../../components/UI-components/Loader/Loader";
 import ErrorMessage from "../../../components/UI-components/ErrorMessage/ErrorMessage";
+import Loader from "../../../components/UI-components/Loader/Loader";
 import SectionTitle from "../../../components/UI-components/SectionTitle/SectionTitle";
+import WaitHealingCard from "../../../components/WaitHealingCard/WaitHealingCard";
 
 interface PokemonToHealType {
   id: number;
