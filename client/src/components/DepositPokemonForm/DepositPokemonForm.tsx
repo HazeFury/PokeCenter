@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { useTheme } from "../../contexts/ThemeContext";
 import { diplayLifeColor } from "../../utils/diplayLifeColor";
 import "./DepositPokemonForm.css";
-import { useTheme } from "../../contexts/ThemeContext";
 
 interface DepositPokemonFormProps {
   pokedexData: {
@@ -82,12 +83,19 @@ const DepositPokemonForm = ({
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newPokemonToHeal),
-    })
-      .then((response) => response.json())
-      .then(() => {
+    }).then((response) => {
+      if (response.status === 201) {
+        // si la requête réussi, on notifie l'utilisateur avec un toast
+        toast.success("Votre Pokemon à bien été admis !");
+        // et on ferme le formulaire
         setSelectedPokemon(undefined);
+        // puis on rafraichi les données afin de voir apparaitre le pokemon ajouté dans la file d'attente
         refreshData();
-      });
+      } else {
+        // si la requête échoue, on le signale à l'utilisateur avec un toast
+        toast.error("Une erreur s'est produite, veuillez réessayer.");
+      }
+    });
   };
 
   // #################  VARIABLE  #############################
