@@ -3,8 +3,8 @@ import PokemonCard from "../../../components/PokemonCard/PokemonCard";
 import EmptyPage from "../../../components/UI-components/EmptyPage/EmptyPage";
 import ErrorMessage from "../../../components/UI-components/ErrorMessage/ErrorMessage";
 import Loader from "../../../components/UI-components/Loader/Loader";
-import { useTheme } from "../../../contexts/ThemeContext";
 import "./Pokedex.css";
+import SectionTitle from "../../../components/UI-components/SectionTitle/SectionTitle";
 
 interface PokemonProps {
   id: number;
@@ -15,7 +15,6 @@ interface PokemonProps {
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState<PokemonProps[] | null>(null);
-  const { theme } = useTheme();
 
   useEffect(() => {
     fetch("https://pokebuildapi.fr/api/v1/pokemon/limit/151")
@@ -39,14 +38,10 @@ const Pokedex = () => {
 
   return (
     <>
-      <div
-        className={`section_detail ${
-          theme === "light" ? "light_theme" : "dark_theme"
-        }`}
-      >
-        <h1>Pokedex</h1>
-        <p>Trouvez ici toutes les informations sur les Pokemon</p>
-      </div>
+      <SectionTitle
+        title="Pokedex"
+        description="Trouvez ici toutes les informations sur les Pokemon"
+      />
       <section className="pokedex_section">
         {pokemons.length > 1 ? (
           pokemons.map((pokemon) => (

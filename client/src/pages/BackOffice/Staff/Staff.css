@@ -5,16 +5,3 @@
   align-items: center;
   padding: 40px 0 60px 0;
 }
-
-.section_detail {
-  text-align: center;
-  padding: 15px;
-}
-
-.section_detail p {
-  font-style: italic;
-}
-
-.section_detail h1 {
-  color: var(--secondary-color);
-}

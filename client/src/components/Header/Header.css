@@ -58,10 +58,6 @@ nav .office_text {
   flex-direction: row;
 }
 
-.red_text {
-  color: var(--secondary-color);
-}
-
 .flex img {
   margin-left: 10px;
 }

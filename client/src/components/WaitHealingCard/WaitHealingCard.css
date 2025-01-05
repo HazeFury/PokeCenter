@@ -1,0 +1,66 @@
+/* Style principal pour les cartes d'attente de soin */
+.wait_heal_card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: #ffffff50;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wait_heal_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Style de l'image */
+.wait_heal_card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Texte de la carte */
+.wait_heal_card p {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #333333;
+  text-align: center;
+}
+
+/* Style des spans */
+.wait_heal_card span {
+  font-weight: bold;
+  color: rgb(105, 93, 105);
+  text-transform: uppercase;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .wait_heal_card {
+    width: 180px;
+    margin: 15px;
+  }
+
+  .wait_heal_card p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wait_heal_card {
+    width: 150px;
+    margin: 10px;
+  }
+
+  .wait_heal_card p {
+    font-size: 12px;
+  }
+}

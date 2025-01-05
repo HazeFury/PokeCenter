@@ -28,3 +28,23 @@ body {
 main {
   min-height: calc(100vh - 120px);
 }
+
+.red {
+  color: var(--secondary-color) !important;
+}
+
+.orange {
+  color: rgb(250, 160, 26) !important;
+}
+
+.yellow {
+  color: rgb(198, 188, 40) !important;
+}
+
+.light_green {
+  color: rgb(22, 184, 22) !important;
+}
+
+.dark_green {
+  color: rgb(6, 146, 226) !important;
+}
