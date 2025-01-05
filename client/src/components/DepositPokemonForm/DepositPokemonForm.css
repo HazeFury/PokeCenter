@@ -1,0 +1,136 @@
+/* Style principal pour le formulaire */
+.deposit_form {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto 40px auto;
+  font-family: Arial, sans-serif;
+  transition: all 0.1s ease;
+}
+
+/* Style des labels */
+.deposit_form label {
+  font-size: 14px;
+  margin: 6px 0 6px 0;
+  text-align: left;
+  width: 100%;
+}
+
+/* Style des champs de formulaire */
+.deposit_form select,
+.deposit_form input[type="text"],
+.deposit_form input[type="range"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.deposit_form input[type="text"]:focus,
+.deposit_form select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+/* Style du bouton de soumission */
+.deposit_form button {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #fff;
+  background: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 15px;
+}
+
+.deposit_form button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.deposit_form button:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+/* Style pour l'image du Pokémon */
+.deposit_form img {
+  width: 100px;
+  height: auto;
+  margin: 10px auto;
+}
+
+/* Style pour les messages d'erreur */
+.red_text {
+  color: #d9534f;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Style des valeurs du champ "range" */
+.deposit_form .health_point {
+  font-size: 1.5rem;
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* Media queries pour la responsivité */
+@media (max-width: 768px) {
+  .deposit_form {
+    padding: 15px;
+    width: 90%;
+  }
+
+  .deposit_form label {
+    font-size: 13px;
+  }
+
+  .deposit_form input[type="text"],
+  .deposit_form select {
+    font-size: 13px;
+    padding: 6px;
+  }
+
+  .deposit_form button {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .deposit_form {
+    box-shadow: none;
+    padding: 10px;
+  }
+
+  .deposit_form label {
+    font-size: 12px;
+  }
+
+  .deposit_form input[type="text"],
+  .deposit_form select {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .deposit_form button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .deposit_form img {
+    width: 80px;
+  }
+}

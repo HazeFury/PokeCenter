@@ -3,8 +3,8 @@ import StaffCard from "../../../components/StaffCard/StaffCard";
 import EmptyPage from "../../../components/UI-components/EmptyPage/EmptyPage";
 import ErrorMessage from "../../../components/UI-components/ErrorMessage/ErrorMessage";
 import Loader from "../../../components/UI-components/Loader/Loader";
-import { useTheme } from "../../../contexts/ThemeContext";
 import "./Staff.css";
+import SectionTitle from "../../../components/UI-components/SectionTitle/SectionTitle";
 
 interface Staff {
   id: number;
@@ -16,7 +16,6 @@ interface Staff {
 
 const Staff = () => {
   const [staff, setStaff] = useState<Staff[] | null>(null);
-  const { theme } = useTheme();
 
   useEffect(() => {
     fetch("http://localhost:3310/api/staff")
@@ -37,14 +36,10 @@ const Staff = () => {
   }
   return (
     <>
-      <div
-        className={`section_detail ${
-          theme === "light" ? "light_theme" : "dark_theme"
-        }`}
-      >
-        <h1>Staff</h1>
-        <p>Voici notre équipe de choc pour soigner vos Pokemons</p>
-      </div>
+      <SectionTitle
+        title="Staff"
+        description="Voici notre équipe de choc pour soigner vos Pokemons"
+      />
       <section className="staff_section">
         {staff.length > 1 ? (
           staff.map((employee) => (

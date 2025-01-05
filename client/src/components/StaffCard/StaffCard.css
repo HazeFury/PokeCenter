@@ -4,7 +4,7 @@
 }
 
 .staff_box {
-  width: 200px;
+  min-width: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +16,7 @@
 }
 .staff_box p {
   padding: 0 0 10px 0;
+  margin: 0 10px;
   width: 100%;
   text-align: center;
   font-style: italic;

@@ -10,9 +10,8 @@ const Header = () => {
       <div className="flex">
         <img src={PokeLogo} alt="pokeball_logo" className="poke_logo" />
         <h1 className="jadielle_center">
-          <span className="red_text">P</span>okemon{" "}
-          <span className="red_text">H</span>ealth{" "}
-          <span className="red_text">C</span>enter
+          <span className="red">P</span>okemon <span className="red">H</span>
+          ealth <span className="red">C</span>enter
         </h1>
         <h1 className="mobile_jadielle_center red_text">PHC</h1>
       </div>
