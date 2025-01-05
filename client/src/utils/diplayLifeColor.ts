@@ -3,7 +3,7 @@
 
 export const diplayLifeColor = (
   currentLife: number,
-  maxLife: number
+  maxLife: number,
 ): string | undefined => {
   const thirdOfLife = maxLife / 3;
   if (currentLife === 0) {
