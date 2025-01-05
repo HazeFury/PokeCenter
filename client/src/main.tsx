@@ -2,7 +2,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import "react-toastify/dist/ReactToastify.css";
 import "./main.css";
 
 /* ************************************************************************* */
@@ -75,6 +77,18 @@ createRoot(rootElement).render(
   <StrictMode>
     <ThemeProvider>
       <RouterProvider router={router} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </ThemeProvider>
   </StrictMode>,
 );
