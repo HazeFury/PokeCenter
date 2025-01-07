@@ -30,10 +30,8 @@ const Home = () => {
   const [pokemonsToHeal, setPokemonsToHeal] = useState<
     PokemonToHealType[] | null
   >(null);
-  const [refreshData, setRefreshData] = useState(false);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
+  const fetchPokemonToHeal = () => {
     fetch(`${import.meta.env.VITE_API_URL}/api/pokemon-to-heal`)
       .then((res) => res.json())
       .then((data) => setPokemonsToHeal(data))
@@ -42,9 +40,11 @@ const Home = () => {
         // pour le différencier de sa valeur initial qui vaut null et ainsi sortir du loader
         console.error(err);
       });
-  }, [refreshData]);
+  };
 
-  useEffect(() => {
+  useEffect(fetchPokemonToHeal, []);
+
+  const fetchPokedex = () => {
     fetch(`${import.meta.env.VITE_API_URL}/api/pokedex`)
       .then((res) => res.json())
       .then((data) => setPokedex(data))
@@ -52,11 +52,9 @@ const Home = () => {
         setPokedex([]);
         console.error(err);
       });
-  }, []);
-
-  const handleRefreshData = () => {
-    setRefreshData(!refreshData);
   };
+
+  useEffect(fetchPokedex, []);
 
   if (!pokedex || !pokemonsToHeal) {
     // Gestion du cas où les données ne sont pas encore disponibles
@@ -89,7 +87,7 @@ const Home = () => {
       />
       <DepositPokemonForm
         pokedexData={pokedex}
-        refreshData={handleRefreshData}
+        refreshData={fetchPokemonToHeal}
       />
       <SectionTitle
         title="File d'attente"

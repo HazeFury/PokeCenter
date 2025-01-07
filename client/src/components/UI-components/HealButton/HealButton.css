@@ -1,0 +1,75 @@
+/* CSS */
+.heal_btn {
+  margin: 10px 0 20px 0;
+  width: 60%;
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heal_btn:disabled {
+  background-color: rgb(90, 90, 90);
+  border: 1px solid #4e4e4e;
+}
+
+.heal_btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+}
+
+@media (min-width: 768px) {
+  .heal_btn {
+    padding: 10px 30px;
+  }
+}
+
+.heal_loader {
+  width: 18.5px;
+  aspect-ratio: 1;
+  display: grid;
+  -webkit-mask: conic-gradient(from 15deg, #0000, #000);
+  mask: conic-gradient(from 15deg, #0000, #000);
+  animation: l26 1s infinite steps(12);
+}
+.heal_loader,
+.heal_loader:before,
+.heal_loader:after {
+  background: radial-gradient(closest-side at 50% 12.5%, #dddddd 96%, #0000) 50%
+    0 / 20% 80% repeat-y,
+    radial-gradient(closest-side at 12.5% 50%, #d5d5d5 96%, #0000) 0 50% / 80%
+    20% repeat-x;
+}
+.heal_loader:before,
+.heal_loader:after {
+  content: "";
+  grid-area: 1 / 1;
+  transform: rotate(30deg);
+}
+.heal_loader:after {
+  transform: rotate(60deg);
+}
+
+@keyframes l26 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
