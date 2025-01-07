@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useTheme } from "../../contexts/ThemeContext";
-import { diplayLifeColor } from "../../utils/diplayLifeColor";
+import { displayLifeColor } from "../../utils/displayLifeColor";
 import "./DepositPokemonForm.css";
 
 interface DepositPokemonFormProps {
@@ -162,7 +162,7 @@ const DepositPokemonForm = ({
           <p className="health_point">
             PV :{" "}
             <span
-              className={diplayLifeColor(
+              className={displayLifeColor(
                 Number.parseInt(pokeForm.health_left),
                 selectedPokemon.health,
               )}

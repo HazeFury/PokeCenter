@@ -1,6 +1,7 @@
 /* Style principal pour les cartes d'attente de soin */
 .wait_heal_card {
-  border: 1px solid #e0e0e0;
+  border-width: 2px;
+  border-style: solid;
   border-radius: 12px;
   background: #ffffff50;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -38,10 +39,31 @@
 /* Style des spans */
 .wait_heal_card span {
   font-weight: bold;
-  color: rgb(105, 93, 105);
+  color: rgb(53, 53, 53);
   text-transform: uppercase;
 }
 
+.health_bar {
+  width: 90%;
+  height: 20px;
+  background-color: #e0e0e0; /* Couleur de fond par défaut */
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 10px auto;
+  position: relative;
+}
+
+.health_bar_fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.health_text {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  font-size: 0.9rem;
+}
 /* Responsive design */
 @media (max-width: 768px) {
   .wait_heal_card {

@@ -31,4 +31,18 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add };
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const idOfPokemonToHeal = Number.parseInt(req.params.id);
+
+    // Create the item
+    const pokemonHealed = await pokemonHealRepository.update(idOfPokemonToHeal);
+
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
+    res.status(201).json({ pokemonHealed });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, add, edit };
