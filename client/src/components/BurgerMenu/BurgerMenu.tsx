@@ -50,7 +50,11 @@ const BurgerMenu = () => {
             </li>
           ))}
           <li className="list_element_burger">
-            <Link to="/login" className="login_link">
+            <Link
+              to="/backoffice/login"
+              className="login_link"
+              onClick={handeCloseMenu}
+            >
               Se connecter
             </Link>
           </li>

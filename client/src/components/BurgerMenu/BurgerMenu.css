@@ -39,6 +39,7 @@
   flex-direction: column;
   text-align: center;
   padding: 40px;
+  z-index: 1;
 }
 
 .mobile_link {
