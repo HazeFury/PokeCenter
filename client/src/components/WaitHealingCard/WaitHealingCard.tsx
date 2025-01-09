@@ -17,11 +17,16 @@ interface WaitHealingCardProps {
 }
 
 const WaitHealingCard = ({ data }: WaitHealingCardProps) => {
+  // #################  FONCTION  #############################
+  // =>
   const [healthLeft, setHealthLeft] = useState(data.health_left);
   const [healing, setHealing] = useState(false);
   const location = useLocation();
   const healthPercentage = (healthLeft / data.health) * 100;
 
+  // #################  FONCTION  #############################
+  // => fonction pour soigner le pokemon. On commence par faire la requête au back et si l'opération
+  // réussi, alors on lance l'animation de guérison
   const handleHealPokemon = () => {
     fetch(`${import.meta.env.VITE_API_URL}/api/heal-pokemon/${data.id}`, {
       method: "put",
@@ -29,7 +34,9 @@ const WaitHealingCard = ({ data }: WaitHealingCardProps) => {
         "Content-Type": "application/json",
       },
     }).then((res) => {
+      //Si la réponse est bonne (status 201), on se prépare à lancer l'animation
       if (res.status === 201) {
+        // si la la vie du pokemon n'est pas au max de ce qu'elle peut être, on passe le state "healing" à true
         if (healthLeft < data.health) {
           setHealing(true);
         }
@@ -38,6 +45,8 @@ const WaitHealingCard = ({ data }: WaitHealingCardProps) => {
   };
 
   useEffect(() => {
+    // => Si healing vaut true, on lance un interval qui incremente de 1 le state "healthLeft"
+    // toute les 0,1 secondes jusqu'à atteindre la santé max du pokemon
     if (healing) {
       const interval = setInterval(() => {
         setHealthLeft((prev) => {
@@ -49,21 +58,23 @@ const WaitHealingCard = ({ data }: WaitHealingCardProps) => {
           return data.health;
         });
       }, 100);
-
+      // au démontage du composant, on stop l'intervalle pour ne pas consommer de la performance inutilement
       return () => clearInterval(interval);
     }
   }, [healing, data.health]);
 
+  // => fonction pour changer la couleur des bordures en fonction  de la vie du pokemon
   const displayBorderColor = () => {
     if (healthLeft === 0) {
-      return { borderColor: "red" };
+      return { borderColor: "red" }; // bordure rouge quand le pokemon est KO (pv = 0)
     }
     if (healthLeft === data.health) {
-      return { borderColor: "#16b816" };
+      return { borderColor: "#16b816" }; // bordure verte quand la vie du pokemon est pleine
     }
-    return { borderColor: "#e0e0e0" };
+    return { borderColor: "#e0e0e0" }; // bordure blanche normal en dehors des 2 conditions ci-dessus
   };
 
+  // #################  RENDU  #############################
   return (
     <figure className="wait_heal_card" style={displayBorderColor()}>
       <img src={data.image} alt={data.name} />
@@ -85,6 +96,7 @@ const WaitHealingCard = ({ data }: WaitHealingCardProps) => {
           }}
         />
       </div>
+      {/* On affiche ce bouton uniquement sur la partie backOffice */}
       {location.pathname.startsWith("/backoffice/action") && (
         <HealButton
           fakeLoader={healing}

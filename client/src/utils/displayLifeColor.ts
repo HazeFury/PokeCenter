@@ -1,3 +1,5 @@
+// fonction qui renvoie une couleur en fonction d'une vie entrante par rapport à une vie maximum
+
 export const displayLifeColor = (
   currentLife: number,
   maxLife: number,
