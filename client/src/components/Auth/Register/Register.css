@@ -1,0 +1,62 @@
+/* Register.css */
+.register_form {
+  max-width: 500px;
+  margin: 10px auto 0 auto;
+  padding: 25px;
+  background-color: var(--background-color);
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.register_form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.register_form input[type="email"],
+.register_form input[type="password"],
+.register_form input[type="text"],
+.register_form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.register_form select {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.register_form input:focus,
+.register_form select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.register_form input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register_form input[type="submit"]:hover {
+  filter: brightness(0.95);
+}
+
+.register_form input[type="submit"]:active {
+  filter: brightness(1.05);
+}

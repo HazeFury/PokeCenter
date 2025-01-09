@@ -1,4 +1,3 @@
-/* Style principal pour le formulaire */
 .deposit_form {
   border: 1px solid var(--main-color);
   border-radius: 8px;
@@ -15,7 +14,6 @@
   transition: all 0.1s ease;
 }
 
-/* Style des labels */
 .deposit_form label {
   font-size: 14px;
   margin: 6px 0 6px 0;
@@ -23,7 +21,6 @@
   width: 100%;
 }
 
-/* Style des champs de formulaire */
 .deposit_form select,
 .deposit_form input[type="text"],
 .deposit_form input[type="range"] {
@@ -42,7 +39,6 @@
   box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
-/* Style du bouton de soumission */
 .deposit_form button {
   padding: 10px 15px;
   font-size: 14px;
@@ -64,14 +60,12 @@
   background: #0056b3;
 }
 
-/* Style pour l'image du Pokémon */
 .deposit_form img {
   width: 100px;
   height: auto;
   margin: 10px auto;
 }
 
-/* Style pour les messages d'erreur */
 .red_text {
   color: #d9534f;
   font-size: 12px;
@@ -79,14 +73,12 @@
   margin-top: 10px;
 }
 
-/* Style des valeurs du champ "range" */
 .deposit_form .health_point {
   font-size: 1.5rem;
   margin-top: 5px;
   text-align: center;
 }
 
-/* Media queries pour la responsivité */
 @media (max-width: 768px) {
   .deposit_form {
     padding: 15px;
