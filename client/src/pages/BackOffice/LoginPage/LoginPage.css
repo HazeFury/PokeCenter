@@ -1,0 +1,41 @@
+.login_choice {
+  padding: 10px 0 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_choice_btn {
+  padding: 10px 20px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.login_choice_btn:hover {
+  filter: brightness(0.95);
+  transform: scale(1.02);
+}
+
+.selected_choice {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+  color: white;
+}
+
+.default_choice {
+  background-color: rgb(231, 231, 231);
+  transform: scale(0.95);
+}
+
+.login_container {
+  padding-bottom: 50px;
+}
+
+@media screen and (min-width: 900px) {
+  .login_choice_btn {
+    padding: 15px 40px;
+    font-size: 1.4rem;
+  }
+}

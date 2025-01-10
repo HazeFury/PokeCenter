@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+// import UserConnectedIcon from "../../assets/icons/user-connected.svg";
+import UserIcon from "../../assets/icons/user.svg";
 import PokeLogo from "../../assets/images/pokeball.png";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import "./Header.css";
@@ -40,6 +42,13 @@ const Header = () => {
         </div>
         <div className="toggle_container">
           <ToggleTheme />
+        </div>
+        <div className="toggle_container">
+          <Link to="/backoffice/login">
+            <div className="user_icon">
+              <img src={UserIcon} alt="user logo" />
+            </div>
+          </Link>
         </div>
       </section>
       <section className="mobile_display">

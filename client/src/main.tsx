@@ -13,6 +13,7 @@ import "./main.css";
 import BackOffice from "./BackOffice";
 import FrontOffice from "./FrontOffice";
 import Action from "./pages/BackOffice/Action/Action";
+import LoginPage from "./pages/BackOffice/LoginPage/LoginPage";
 import Staff from "./pages/BackOffice/Staff/Staff";
 import Home from "./pages/FrontOffice/Home/Home";
 import Pokedex from "./pages/FrontOffice/Pokedex/Pokedex";
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "action",
         element: <Action />,
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
       },
     ],
   },
