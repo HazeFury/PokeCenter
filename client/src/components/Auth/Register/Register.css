@@ -60,3 +60,10 @@
 .register_form input[type="submit"]:active {
   filter: brightness(1.05);
 }
+
+.error_register {
+  color: rgb(155, 7, 7);
+  margin: 0 0 20px 0;
+  border-top: rgb(155, 7, 7) solid 2px;
+  padding-top: 10px;
+}
