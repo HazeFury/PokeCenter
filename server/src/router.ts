@@ -19,7 +19,11 @@ import pokemonHealActions from "./modules/pokemonHeal/pokemonHealActions";
 
 router.get("/api/pokemon-to-heal", pokemonHealActions.browse);
 router.post("/api/new-pokemon-to-heal", pokemonHealActions.add);
-router.put("/api/heal-pokemon/:id", pokemonHealActions.edit);
+router.put(
+  "/api/heal-pokemon/:id",
+  authActions.verifyToken,
+  pokemonHealActions.edit,
+);
 
 /* ************************************************************************* */
 

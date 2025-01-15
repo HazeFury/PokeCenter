@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
-// import UserConnectedIcon from "../../assets/icons/user-connected.svg";
+import UserConnectedIcon from "../../assets/icons/user-connected.svg";
 import UserIcon from "../../assets/icons/user.svg";
 import PokeLogo from "../../assets/images/pokeball.png";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import "./Header.css";
+import { useAuth } from "../../contexts/AuthContext";
 import ToggleTheme from "../ToggleTheme/ToggleTheme";
 
 const Header = () => {
+  const { auth } = useAuth();
+
   return (
     <nav>
       <div className="flex">
@@ -46,7 +49,10 @@ const Header = () => {
         <div className="toggle_container">
           <Link to="/backoffice/login">
             <div className="user_icon">
-              <img src={UserIcon} alt="user logo" />
+              <img
+                src={auth === null ? UserIcon : UserConnectedIcon}
+                alt="user logo"
+              />
             </div>
           </Link>
         </div>

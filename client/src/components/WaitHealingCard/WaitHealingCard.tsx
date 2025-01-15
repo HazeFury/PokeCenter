@@ -2,6 +2,8 @@ import { useLocation } from "react-router-dom";
 import { displayLifeColor } from "../../utils/displayLifeColor";
 import "./WaitHealingCard.css";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { useAuth } from "../../contexts/AuthContext";
 import HealButton from "../UI-components/HealButton/HealButton";
 
 interface WaitHealingCardProps {
@@ -17,8 +19,8 @@ interface WaitHealingCardProps {
 }
 
 const WaitHealingCard = ({ data }: WaitHealingCardProps) => {
-  // #################  FONCTION  #############################
-  // =>
+  // #################  VARIABLE & STATES  #############################
+  const { auth } = useAuth();
   const [healthLeft, setHealthLeft] = useState(data.health_left);
   const [healing, setHealing] = useState(false);
   const location = useLocation();
@@ -28,10 +30,15 @@ const WaitHealingCard = ({ data }: WaitHealingCardProps) => {
   // => fonction pour soigner le pokemon. On commence par faire la requête au back et si l'opération
   // réussi, alors on lance l'animation de guérison
   const handleHealPokemon = () => {
+    if (auth === null) {
+      toast.error("Vous devez être connecté pour soigner un pokémon");
+      return;
+    }
     fetch(`${import.meta.env.VITE_API_URL}/api/heal-pokemon/${data.id}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${auth !== null ? auth.token : ""}`,
       },
     }).then((res) => {
       //Si la réponse est bonne (status 201), on se prépare à lancer l'animation
@@ -40,6 +47,10 @@ const WaitHealingCard = ({ data }: WaitHealingCardProps) => {
         if (healthLeft < data.health) {
           setHealing(true);
         }
+      } else if (res.status === 401) {
+        toast.error("Vous n'avez pas le droit d'effectuer cette action !");
+      } else {
+        toast.error("Un problème est survenu, veuillez réessayer");
       }
     });
   };
