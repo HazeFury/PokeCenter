@@ -1,7 +1,12 @@
 import "./Register.css";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { z } from "zod";
+
+interface RegisterProps {
+  switchToLogin: () => void;
+}
 
 const allPokemonTypes = [
   { id: 2, type: "Feu" },
@@ -60,15 +65,37 @@ const SignUpSchema = z.object({
 });
 type SignUpSchemaType = z.infer<typeof SignUpSchema>;
 
-const Register = () => {
+const Register = ({ switchToLogin }: RegisterProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
 
-  const onSubmit: SubmitHandler<SignUpSchemaType> = (data) => {
-    console.info(data);
+  const onSubmit: SubmitHandler<SignUpSchemaType> = async (data) => {
+    try {
+      // Appel à l'API pour créer un nouvel utilisateur
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/new-staff`,
+        {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        },
+      );
+
+      // Redirection vers la page des pokemons à soigner si la création réussit
+      if (response.status === 201) {
+        toast.success("Un email de confirmation vous a été envoyé par mail");
+        switchToLogin();
+      } else {
+        toast.error("Une erreur s'est produite, veuillez réessayer");
+
+        console.info(response);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -88,11 +115,11 @@ const Register = () => {
       )}
 
       <label htmlFor="name">Nom</label>
-      <input type="text" {...register("name")} />
+      <input type="text" {...register("name")} placeholder="nom" />
       {errors.name && <p className="error_register">{errors.name.message}</p>}
 
       <label htmlFor="origin">Ville d'origine</label>
-      <input type="text" {...register("origin")} />
+      <input type="text" {...register("origin")} placeholder="ville" />
       {errors.origin && (
         <p className="error_register">{errors.origin.message}</p>
       )}

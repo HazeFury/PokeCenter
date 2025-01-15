@@ -1,4 +1,5 @@
 import "./StaffCard.css";
+import AnomymUser from "../../assets/images/anom_user.png";
 import { useTheme } from "../../contexts/ThemeContext";
 
 interface StaffDataProps {
@@ -19,7 +20,12 @@ const StaffCard = ({ staffData }: StaffDataProps) => {
         theme === "light" ? "light_theme" : "dark_theme"
       }`}
     >
-      <img src={staffData.image} alt={staffData.name} className="staff_img" />
+      <img
+        //  Si "staffData.image" vaut null, on affiche l'image "AnomymUser"
+        src={staffData.image ?? AnomymUser}
+        alt={staffData.name}
+        className="staff_img"
+      />
       <p id="staff_name">{staffData.name}</p>
       <p>
         Origine : <span className="red_text">{staffData.origin}</span>

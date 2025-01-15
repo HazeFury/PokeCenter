@@ -21,8 +21,10 @@ create table pokemon_to_heal (
 create table staff (
   id int unsigned primary key auto_increment not null,
   name varchar(50) not null,
-  image varchar(255) not null,
+  image varchar(255) default null,
   origin varchar(50) not null,
-  favorite_type varchar(30) not null
+  favorite_type varchar(30) not null,
+  email varchar(100) not null unique,
+  hashed_password varchar(255) not null 
 );
 

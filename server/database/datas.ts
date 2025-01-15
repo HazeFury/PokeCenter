@@ -5,6 +5,8 @@ export const staffData = [
     image:
       "https://www.pokepedia.fr/images/thumb/a/ae/Sacha-Anim%C3%A9_LV.png/175px-Sacha-Anim%C3%A9_LV.png",
     favorite_type: "Électrique",
+    email: "Sacha@gmail.com",
+    hashed_password: "toto123",
   },
   {
     name: "Ondine",
@@ -12,6 +14,8 @@ export const staffData = [
     image:
       "https://www.pokepedia.fr/images/b/b2/Ondine-Anim%C3%A9_SL.png?20180508095425",
     favorite_type: "Eau",
+    email: "Ondine@gmail.com",
+    hashed_password: "toto123",
   },
   {
     name: "Pierre",
@@ -19,6 +23,8 @@ export const staffData = [
     image:
       "https://www.pokepedia.fr/images/f/fa/Pierre-Anim%C3%A9_SL.png?20180508095358",
     favorite_type: "Roche",
+    email: "Pierre@gmail.com",
+    hashed_password: "toto123",
   },
   {
     name: "Infirmière Joëlle",
@@ -26,6 +32,8 @@ export const staffData = [
     image:
       "https://www.pokepedia.fr/images/3/3f/Infirmi%C3%A8re_Jo%C3%ABlle_-_Kanto_%C3%A0_Sinnoh.png?20190506112451",
     favorite_type: "Normal",
+    email: "Joëlle@gmail.com",
+    hashed_password: "toto123",
   },
   {
     name: "Agent Jenny",
@@ -33,6 +41,8 @@ export const staffData = [
     image:
       "https://www.pokepedia.fr/images/e/e6/Agent_JennyXY.png?20131102023005",
     favorite_type: "Canin",
+    email: "Jenny@gmail.com",
+    hashed_password: "toto123",
   },
   {
     name: "Professeur Chen",
@@ -40,6 +50,8 @@ export const staffData = [
     image:
       "https://www.pokepedia.fr/images/9/9b/Professeur_Chen-Anim%C3%A9_NB.png?20210711151228",
     favorite_type: "Canin",
+    email: "Chen@gmail.com",
+    hashed_password: "toto123",
   },
 ];
 
