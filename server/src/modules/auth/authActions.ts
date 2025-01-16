@@ -25,7 +25,7 @@ const login: RequestHandler = async (req, res, next) => {
       const { hashed_password, ...userWithoutHashedPassword } = user;
 
       const myPayload: MyPayload = {
-        sub: user.id.toString(),
+        email: user.email,
       };
 
       const token = await jwt.sign(
@@ -72,7 +72,7 @@ const hashPassword: RequestHandler = async (req, res, next) => {
   }
 };
 
-const verifyToken: RequestHandler = (req, res, next) => {
+const verifyToken: RequestHandler = async (req, res, next) => {
   try {
     // Vérifier la présence de l'en-tête "Authorization" dans la requête
     const authorizationHeader = req.get("Authorization");
@@ -92,7 +92,12 @@ const verifyToken: RequestHandler = (req, res, next) => {
     // En cas de succès, le payload est extrait et décodé
     req.auth = jwt.verify(token, process.env.APP_SECRET as string) as MyPayload;
 
-    next();
+    // on recherche l'utilisateur ayant l'id qu'on récupère dans le sub du JWT
+    const existingStaff = await staffRepository.verifyByEmail(req.auth.email);
+    // Si on ne trouve personne ayant cette id
+    if (existingStaff !== undefined) {
+      next();
+    }
   } catch (err) {
     console.error(err);
     res.sendStatus(401);

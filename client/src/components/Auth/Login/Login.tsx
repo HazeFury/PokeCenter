@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../../contexts/AuthContext";
 
 const Login = () => {
-  const { setAuth } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -30,7 +30,7 @@ const Login = () => {
       // Redirection vers la page de connexion si la création réussit
       if (response.status === 200) {
         const user = await response.json();
-        setAuth(user);
+        login(user);
         toast.success(`Hello ${user.user.name}, content de te revoir ! 😊`);
         navigate("/backoffice/action");
       } else {

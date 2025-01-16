@@ -61,6 +61,16 @@
   border-radius: 5px;
 }
 
+.connected_as {
+  color: rgb(58, 198, 58);
+  margin-bottom: 10px;
+}
+
+.user_connected {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 .right_to_left {
   animation: slide_right_to_left 0.4s ease;
 }

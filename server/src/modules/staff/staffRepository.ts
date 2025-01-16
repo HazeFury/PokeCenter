@@ -42,6 +42,15 @@ class StaffRepository {
 
     return rows[0] as Staff;
   }
+
+  async verifyByEmail(email: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "select name from staff where email = ?",
+      [email],
+    );
+
+    return rows[0] as Staff;
+  }
 }
 
 export default new StaffRepository();

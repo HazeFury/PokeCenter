@@ -16,6 +16,7 @@ nav {
   color: white;
   height: 80px;
   border-bottom: solid 1px var(--white-color);
+  z-index: 999999999;
 }
 
 nav h2 {
@@ -102,16 +103,50 @@ a:hover {
 }
 
 .user_icon {
-  border: solid white 2px;
   padding: 2px;
   margin-right: 10px;
   border-radius: 100%;
   padding: 0 1px;
   transition: all 0.065s ease-in;
+  cursor: pointer;
 }
 .user_icon img {
   width: 35px;
 }
+
+.logout_btn {
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+}
+
+.logout_box {
+  position: fixed;
+  right: 10px;
+  top: 80px;
+  width: fit-content;
+  height: 40px;
+  text-align: center;
+  background-color: var(--main-color);
+  animation: slide_top_to_bottom 0.2s ease;
+}
+
+.logout_box button {
+  background-color: var(--secondary-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.logout_box p {
+  margin: 4px 0 4px 0;
+}
+
+.logout_box button:hover {
+  filter: brightness(0.9);
+}
+
 .user_icon:hover {
   border-color: var(--secondary-color);
   transform: scale(1.1);
@@ -120,9 +155,29 @@ a:hover {
   transform: scale(0.9);
 }
 
-@media screen and (min-width: 900px) {
+.green_border {
+  border: rgb(23, 175, 23) solid 2px;
+}
+.white_border {
+  border: white solid 2px;
+}
+
+@keyframes slide_top_to_bottom {
+  0% {
+    top: 0px;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    top: 80px;
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 1000px) {
   .desktop_display {
-    display: block;
     display: flex;
     justify-content: space-between;
   }
