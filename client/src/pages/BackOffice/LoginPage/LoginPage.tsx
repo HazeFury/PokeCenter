@@ -7,6 +7,10 @@ import SectionTitle from "../../../components/UI-components/SectionTitle/Section
 const LoginPage = () => {
   const [choiceIsLogin, setChoiceIsLogin] = useState(true);
 
+  const switchToLogin = () => {
+    setChoiceIsLogin(true);
+  };
+
   return (
     <>
       <SectionTitle
@@ -34,7 +38,11 @@ const LoginPage = () => {
         </button>
       </section>
       <section className="login_container">
-        {choiceIsLogin === true ? <Login /> : <Register />}
+        {choiceIsLogin === true ? (
+          <Login />
+        ) : (
+          <Register switchToLogin={switchToLogin} />
+        )}
       </section>
     </>
   );

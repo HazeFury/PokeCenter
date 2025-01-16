@@ -12,6 +12,7 @@ import "./main.css";
 // Import the main app component
 import BackOffice from "./BackOffice";
 import FrontOffice from "./FrontOffice";
+import { AuthProvider } from "./contexts/AuthContext";
 import Action from "./pages/BackOffice/Action/Action";
 import LoginPage from "./pages/BackOffice/LoginPage/LoginPage";
 import Staff from "./pages/BackOffice/Staff/Staff";
@@ -81,19 +82,21 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     <ThemeProvider>
-      <RouterProvider router={router} />
-      <ToastContainer
-        position="bottom-right"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+      <AuthProvider>
+        <RouterProvider router={router} />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+      </AuthProvider>
     </ThemeProvider>
   </StrictMode>,
 );

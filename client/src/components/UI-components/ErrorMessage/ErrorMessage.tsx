@@ -9,7 +9,9 @@ const ErrorMessage = ({ text }: ErrorMessageProps) => {
   return (
     <>
       <img src={Sad} alt="Pikachu triste" />
-      <p className="error_text">{text}</p>
+      <p className="error_text" style={{ marginBottom: "20px" }}>
+        {text}
+      </p>
     </>
   );
 };

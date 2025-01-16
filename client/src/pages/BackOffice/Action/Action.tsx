@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import EmptyPage from "../../../components/UI-components/EmptyPage/EmptyPage";
+import ErrorMessage from "../../../components/UI-components/ErrorMessage/ErrorMessage";
 import SectionTitle from "../../../components/UI-components/SectionTitle/SectionTitle";
 import WaitHealingCard from "../../../components/WaitHealingCard/WaitHealingCard";
+import { useAuth } from "../../../contexts/AuthContext";
 
 interface PokemonToHealType {
   id: number;
@@ -15,6 +19,7 @@ const Action = () => {
   const [pokemonsToHeal, setPokemonsToHeal] = useState<
     PokemonToHealType[] | null
   >(null);
+  const { auth } = useAuth();
 
   const fetchPokemonToHeal = () => {
     fetch(`${import.meta.env.VITE_API_URL}/api/pokemon-to-heal`)
@@ -28,6 +33,21 @@ const Action = () => {
   };
 
   useEffect(fetchPokemonToHeal, []);
+
+  if (auth === null) {
+    return (
+      <>
+        <EmptyPage>
+          <ErrorMessage text="Vous devez être connecté pour accéder à cette section" />
+          <Link to="/backoffice/login">
+            <button type="button" className="login_choice_btn selected_choice">
+              Se connecter
+            </button>
+          </Link>
+        </EmptyPage>
+      </>
+    );
+  }
 
   return (
     <>

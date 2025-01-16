@@ -1,12 +1,26 @@
 import { Link } from "react-router-dom";
-// import UserConnectedIcon from "../../assets/icons/user-connected.svg";
+import UserConnectedIcon from "../../assets/icons/user-connected.svg";
 import UserIcon from "../../assets/icons/user.svg";
 import PokeLogo from "../../assets/images/pokeball.png";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import "./Header.css";
+import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 import ToggleTheme from "../ToggleTheme/ToggleTheme";
 
 const Header = () => {
+  const { auth, logout } = useAuth();
+  const [logoutMenu, setLogoutMenu] = useState(false);
+
+  const handleOpenLogoutMenu = () => {
+    setLogoutMenu(!logoutMenu);
+  };
+
+  const handleLogout = () => {
+    handleOpenLogoutMenu();
+    logout();
+  };
+
   return (
     <nav>
       <div className="flex">
@@ -44,12 +58,32 @@ const Header = () => {
           <ToggleTheme />
         </div>
         <div className="toggle_container">
-          <Link to="/backoffice/login">
-            <div className="user_icon">
-              <img src={UserIcon} alt="user logo" />
-            </div>
-          </Link>
+          {auth === null ? (
+            <Link to="/backoffice/login">
+              <div className="user_icon white_border">
+                <img src={UserIcon} alt="user logo" />
+              </div>
+            </Link>
+          ) : (
+            <button
+              type="button"
+              className="logout_btn"
+              onClick={handleOpenLogoutMenu}
+            >
+              <div className="user_icon green_border">
+                <img src={UserConnectedIcon} alt="user logo with checkbox" />
+              </div>
+            </button>
+          )}
         </div>
+        {logoutMenu === true && (
+          <div className="logout_box">
+            <p>{auth?.user.name}</p>
+            <button type="button" className="login_link" onClick={handleLogout}>
+              Déconnexion
+            </button>
+          </div>
+        )}
       </section>
       <section className="mobile_display">
         <BurgerMenu />
