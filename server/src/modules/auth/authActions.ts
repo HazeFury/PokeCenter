@@ -94,12 +94,7 @@ const verifyToken: RequestHandler = async (req, res, next) => {
     // En cas de succès, le payload est extrait et décodé
     req.auth = jwt.verify(token, process.env.APP_SECRET as string) as MyPayload;
 
-    // on recherche l'utilisateur ayant l'id qu'on récupère dans le sub du JWT
-    const existingStaff = await staffRepository.verifyByEmail(req.auth.email);
-    // Si on ne trouve personne ayant cette id
-    if (existingStaff !== undefined) {
-      next();
-    }
+    next();
   } catch (err) {
     console.error(err);
     res.sendStatus(401);
