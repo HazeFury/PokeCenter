@@ -31,7 +31,6 @@ const Login = () => {
       if (response.status === 200) {
         const user = await response.json();
         login(user);
-        toast.success(`Hello ${user.user.name}, content de te revoir ! 😊`);
         navigate("/backoffice/action");
       } else {
         toast.error("Une erreur s'est produite, veuillez réessayer");
