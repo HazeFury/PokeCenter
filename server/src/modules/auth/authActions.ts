@@ -92,12 +92,10 @@ const verifyToken: RequestHandler = async (req, res, next) => {
 
     // Vérifier la validité du token (son authenticité et sa date d'expériation)
     // En cas de succès, le payload est extrait et décodé
-    const verified = (await jwt.verify(
+    req.body.auth = jwt.verify(
       token,
       process.env.APP_SECRET as string,
-    )) as MyPayload;
-
-    req.auth = verified;
+    ) as MyPayload;
 
     next();
   } catch (err) {
