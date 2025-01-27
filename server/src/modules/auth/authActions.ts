@@ -22,7 +22,9 @@ const login: RequestHandler = async (req, res, next) => {
       req.body.password,
     );
 
-    if (verified) {
+    req.body.password = undefined;
+
+    if (verified === true) {
       // Respond with the user and a signed token in JSON format (but without the hashed password)
       const { hashed_password, ...userWithoutHashedPassword } = user;
 
