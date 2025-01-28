@@ -23,9 +23,11 @@ const add: RequestHandler = async (req, res, next) => {
 
     // Create the item
     const insertId = await pokemonHealRepository.create(newPokemonToHeal);
-
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-    res.status(201).json({ insertId });
+    if (typeof insertId === "number") {
+      res.status(201).json({ insertId });
+    } else {
+      res.sendStatus(500);
+    }
   } catch (err) {
     next(err);
   }
@@ -38,8 +40,11 @@ const edit: RequestHandler = async (req, res, next) => {
     // Create the item
     const pokemonHealed = await pokemonHealRepository.update(idOfPokemonToHeal);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-    res.status(201).json({ pokemonHealed });
+    if (pokemonHealed === 1) {
+      res.status(204).json(pokemonHealed);
+    } else {
+      res.sendStatus(404);
+    }
   } catch (err) {
     next(err);
   }
