@@ -5,6 +5,8 @@ import jwt from "jsonwebtoken";
 
 import type { JwtPayload } from "jsonwebtoken";
 
+type MyPayload = JwtPayload & { email: string };
+
 // Import access to data
 import staffRepository from "../staff/staffRepository";
 const login: RequestHandler = async (req, res, next) => {
@@ -20,7 +22,9 @@ const login: RequestHandler = async (req, res, next) => {
       req.body.password,
     );
 
-    if (verified) {
+    req.body.password = undefined;
+
+    if (verified === true) {
       // Respond with the user and a signed token in JSON format (but without the hashed password)
       const { hashed_password, ...userWithoutHashedPassword } = user;
 
@@ -90,14 +94,12 @@ const verifyToken: RequestHandler = async (req, res, next) => {
 
     // Vérifier la validité du token (son authenticité et sa date d'expériation)
     // En cas de succès, le payload est extrait et décodé
-    req.auth = jwt.verify(token, process.env.APP_SECRET as string) as MyPayload;
+    req.body.auth = jwt.verify(
+      token,
+      process.env.APP_SECRET as string,
+    ) as MyPayload;
 
-    // on recherche l'utilisateur ayant l'id qu'on récupère dans le sub du JWT
-    const existingStaff = await staffRepository.verifyByEmail(req.auth.email);
-    // Si on ne trouve personne ayant cette id
-    if (existingStaff !== undefined) {
-      next();
-    }
+    next();
   } catch (err) {
     console.error(err);
     res.sendStatus(401);

@@ -18,7 +18,7 @@ const Staff = () => {
   const [staff, setStaff] = useState<Staff[] | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3310/api/staff")
+    fetch(`${import.meta.env.VITE_API_URL}/api/staff`)
       .then((res) => res.json())
       .then((data) => setStaff(data))
       .catch((err) => {
