@@ -4,14 +4,17 @@ import UserIcon from "../../assets/icons/user.svg";
 import PokeLogo from "../../assets/images/pokeball.png";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import "./Header.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import ToggleTheme from "../ToggleTheme/ToggleTheme";
+import Modal from "../UI-components/Modal/Modal";
 
 const Header = () => {
   const { auth, logout } = useAuth();
   const [logoutMenu, setLogoutMenu] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
+  // ------- LOGOUT FUNCTIONS  -----------------
   const handleOpenLogoutMenu = () => {
     setLogoutMenu(!logoutMenu);
   };
@@ -20,6 +23,24 @@ const Header = () => {
     handleOpenLogoutMenu();
     logout();
   };
+  // ------- DELETE ACCOUNT FUNCTIONS  -----------------
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  useEffect(() => {
+    if (logoutMenu === true) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflowY = "scroll";
+    }
+  }, [logoutMenu]);
+
+  // -------------------------------------------
 
   return (
     <nav>
@@ -79,10 +100,24 @@ const Header = () => {
         {logoutMenu === true && (
           <div className="logout_box">
             <p>{auth?.user.name}</p>
+            <button
+              type="button"
+              className="login_link"
+              onClick={handleOpenModal}
+            >
+              Supprimer le compte
+            </button>
             <button type="button" className="login_link" onClick={handleLogout}>
               Déconnexion
             </button>
           </div>
+        )}
+        {openModal && true && (
+          <Modal
+            action={() => console.info("toto")}
+            closeModal={handleCloseModal}
+            modalText={"Êtes-vous sûr de supprimer votre compte ?"}
+          />
         )}
       </section>
       <section className="mobile_display">
