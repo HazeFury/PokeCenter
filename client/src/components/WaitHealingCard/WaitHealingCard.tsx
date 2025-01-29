@@ -42,7 +42,7 @@ const WaitHealingCard = ({ data }: WaitHealingCardProps) => {
       },
     }).then((res) => {
       //Si la réponse est bonne (status 201), on se prépare à lancer l'animation
-      if (res.status === 201) {
+      if (res.status === 204) {
         // si la la vie du pokemon n'est pas au max de ce qu'elle peut être, on passe le state "healing" à true
         if (healthLeft < data.health) {
           setHealing(true);

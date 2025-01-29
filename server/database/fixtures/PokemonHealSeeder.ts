@@ -14,7 +14,7 @@ class PokemonHealSeeder extends AbstractSeeder {
     for (let i = 0; i < 15; i += 1) {
       const newPokemonToHeal = {
         pokedex_id: Math.floor(Math.random() * 151) + 1,
-        pokemon_pseudo: this.faker.word.adjective(),
+        pokemon_pseudo: this.faker.person.lastName(),
         pokemon_owner: this.faker.person.firstName(),
         health_left: Math.floor(Math.random() * 10),
       };
