@@ -127,6 +127,8 @@ a:hover {
   width: fit-content;
   height: 40px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
   background-color: var(--main-color);
   animation: slide_top_to_bottom 0.2s ease;
 }

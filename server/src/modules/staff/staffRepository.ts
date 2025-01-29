@@ -51,6 +51,15 @@ class StaffRepository {
 
     return rows[0] as Staff;
   }
+
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from staff where id = ?",
+      [id],
+    );
+
+    return result.affectedRows;
+  }
 }
 
 export default new StaffRepository();
