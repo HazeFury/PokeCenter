@@ -35,4 +35,21 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add };
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const id = req.body.auth.id;
+
+    const affectedRows = await staffRepository.delete(id);
+
+    if (affectedRows === 1) {
+      res.status(204).json({ affectedRows });
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+export default { browse, add, destroy };

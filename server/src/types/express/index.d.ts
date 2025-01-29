@@ -1,7 +1,7 @@
 import type { JwtPayload } from "jsonwebtoken";
 
 declare global {
-  export type MyPayload = JwtPayload & { email: string };
+  export type MyPayload = JwtPayload & { email: string; id: number };
 
   namespace Express {
     export interface Request {

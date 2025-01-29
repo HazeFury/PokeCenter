@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 import type { JwtPayload } from "jsonwebtoken";
 
-type MyPayload = JwtPayload & { email: string };
+type MyPayload = JwtPayload & { email: string; id: number };
 
 // Import access to data
 import staffRepository from "../staff/staffRepository";
@@ -30,6 +30,7 @@ const login: RequestHandler = async (req, res, next) => {
 
       const myPayload: MyPayload = {
         email: user.email,
+        id: user.id,
       };
 
       const token = await jwt.sign(
