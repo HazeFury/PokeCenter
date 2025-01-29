@@ -34,43 +34,6 @@ describe("GET /api/pokemon-to-heal", () => {
   });
 });
 
-// // Test suite for the GET /api/pokemon/:id route
-// describe("GET /api/pokemon/:id", () => {
-//   it("should fetch a single item successfully", async () => {
-//     // Mock rows returned from the database
-//     const rows = [{}] as Rows;
-
-//     // Mock the implementation of the database query method
-//     jest
-//       .spyOn(databaseClient, "query")
-//       .mockImplementation(async () => [rows, []]);
-
-//     // Send a GET request to the /api/pokemon/:id endpoint
-//     const response = await supertest(app).get("/api/pokemon/1");
-
-//     // Assertions
-//     expect(response.status).toBe(200);
-//     expect(response.body).toStrictEqual(rows[0]);
-//   });
-
-//   it("should fail on invalid id", async () => {
-//     // Mock empty rows returned from the database
-//     const rows = [] as Rows;
-
-//     // Mock the implementation of the database query method
-//     jest
-//       .spyOn(databaseClient, "query")
-//       .mockImplementation(async () => [rows, []]);
-
-//     // Send a GET request to the /api/pokemon/:id endpoint with an invalid ID
-//     const response = await supertest(app).get("/api/pokemon/0");
-
-//     // Assertions
-//     expect(response.status).toBe(404);
-//     expect(response.body).toEqual({});
-//   });
-// });
-
 // Test suite for the POST /api/pokemon route
 // Doesn't pass: maybe something to change in app config :/
 describe("POST /api/new-pokemon-to-heal", () => {

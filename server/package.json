@@ -7,7 +7,9 @@
     "db:seed": "tsx ./bin/seed",
     "build": "tsx ./bin/migrate && tsx ./bin/seed &&  tsc ./src/main --outDir ../dist --esModuleInterop",
     "start": "node ../dist/src/main",
-    "test": "jest --verbose"
+    "test": "tsx ./bin/migrate && tsx ./bin/seed && jest --verbose",
+    "test:unit": "jest --verbose ./tests/unit",
+    "test:integration": "tsx ./bin/migrate && tsx ./bin/seed && jest --verbose ./tests/integration"
   },
   "dependencies": {
     "argon2": "^0.41.1",

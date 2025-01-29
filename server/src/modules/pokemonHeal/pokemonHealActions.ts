@@ -21,7 +21,7 @@ const add: RequestHandler = async (req, res, next) => {
       health_left: req.body.health_left,
     };
 
-    // Create the item
+    // Create the pokemon to heal
     const insertId = await pokemonHealRepository.create(newPokemonToHeal);
     if (typeof insertId === "number") {
       res.status(201).json({ insertId });
@@ -37,7 +37,7 @@ const edit: RequestHandler = async (req, res, next) => {
   try {
     const idOfPokemonToHeal = Number.parseInt(req.params.id);
 
-    // Create the item
+    // Heal the pokemon
     const pokemonHealed = await pokemonHealRepository.update(idOfPokemonToHeal);
 
     if (pokemonHealed === 1) {
