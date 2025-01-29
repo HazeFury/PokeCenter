@@ -12,6 +12,12 @@ router.post("/api/login", authActions.login);
 
 router.post("/api/new-staff", authActions.hashPassword, staffActions.add);
 
+router.delete(
+  "/api/account/:id",
+  authActions.verifyToken,
+  staffActions.destroy,
+);
+
 /* ************************************************************************* */
 
 // ****************     POKEMON-HEAL ROUTES    ************************

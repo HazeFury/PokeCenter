@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserConnectedIcon from "../../assets/icons/user-connected.svg";
 import UserIcon from "../../assets/icons/user.svg";
 import PokeLogo from "../../assets/images/pokeball.png";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import "./Header.css";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useAuth } from "../../contexts/AuthContext";
 import ToggleTheme from "../ToggleTheme/ToggleTheme";
 import Modal from "../UI-components/Modal/Modal";
@@ -13,6 +14,7 @@ const Header = () => {
   const { auth, logout } = useAuth();
   const [logoutMenu, setLogoutMenu] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
 
   // ------- LOGOUT FUNCTIONS  -----------------
   const handleOpenLogoutMenu = () => {
@@ -30,6 +32,30 @@ const Header = () => {
   };
   const handleCloseModal = () => {
     setOpenModal(false);
+  };
+
+  const handleDeletePokemon = () => {
+    if (auth === null) {
+      toast.error("Vous devez être connecté pour soigner un pokémon");
+      return;
+    }
+    fetch(`${import.meta.env.VITE_API_URL}/api/account`, {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${auth !== null ? auth.token : ""}`,
+      },
+    }).then((res) => {
+      if (res.status === 204) {
+        logout();
+        toast.info("Adieu jeune dresseur !");
+        navigate("/");
+      } else if (res.status === 401) {
+        toast.error("Vous n'avez pas le droit d'effectuer cette action !");
+      } else {
+        toast.error("Un problème est survenu, veuillez réessayer");
+      }
+    });
   };
 
   useEffect(() => {
@@ -114,7 +140,7 @@ const Header = () => {
         )}
         {openModal && true && (
           <Modal
-            action={() => console.info("toto")}
+            action={handleDeletePokemon}
             closeModal={handleCloseModal}
             modalText={"Êtes-vous sûr de supprimer votre compte ?"}
           />
